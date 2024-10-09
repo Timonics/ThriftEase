@@ -1,7 +1,13 @@
 import React from "react";
 
 const WhatToExpect = () => {
-  const expect = [
+  type Expect = {
+    icon: string;
+    name: string;
+    desc: string;
+  };
+
+  const expect: Expect[] = [
     {
       icon: "🛍️",
       name: "Shop Preloved Items",

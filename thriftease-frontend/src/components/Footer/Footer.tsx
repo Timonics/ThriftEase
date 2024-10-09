@@ -9,7 +9,12 @@ import { FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className="flex flex-col p-5 gap-10 items-center pt-5 bg-slate-100">
-      <Link className="p-2 border rounded-xl w-fit mr-auto bg-[#2ECC71] font-bold">ThriftEase</Link>
+      <Link
+        className="p-2 border rounded-xl w-fit mr-auto bg-[#2ECC71] font-bold"
+        to={""}
+      >
+        ThriftEase
+      </Link>
       <div className="flex gap-5 items-center">
         <div className="flex flex-col gap-3 justify-between w-[50%] mx-4 ">
           <h3 className="text-lg font-bold text-[#2ECC71]">About Us</h3>
@@ -28,32 +33,32 @@ const Footer = () => {
           </p>
         </div>
         <div className="flex flex-col ml-auto mr-32 text-sm gap-3 font-medium">
-          <Link>How it works</Link>
-          <hr className="mr-2"/>
-          <Link>FAQs</Link>
-          <hr className="mr-2"/>
-          <Link>Contact Support</Link>
+          <Link to={""}>How it works</Link>
+          <hr className="mr-2" />
+          <Link to={""}>FAQs</Link>
+          <hr className="mr-2" />
+          <Link to={""}>Contact Support</Link>
         </div>
       </div>
       <div className="flex gap-7 text-4xl text-[#2ECC71]">
-        <Link>
+        <Link to={""}>
           <FaInstagram />
         </Link>
-        <Link>
+        <Link to={""}>
           <FaFacebook />
         </Link>
-        <Link>
+        <Link to={""}>
           <FaXTwitter />
         </Link>
-        <Link>
+        <Link to={""}>
           <FaLinkedin />
         </Link>
       </div>
       <div className="flex flex-col items-center gap-4">
         <div className="flex gap-5 text-sm">
-          <Link>Privacy Policy</Link>
-          <Link>Terms of Service</Link>
-          <Link>Cookie Policy</Link>
+          <Link to={""}>Privacy Policy</Link>
+          <Link to={""}>Terms of Service</Link>
+          <Link to={""}>Cookie Policy</Link>
         </div>
         <p className="text-[11px] font-light">
           © 2024 ThriftEase. All rights reserved.

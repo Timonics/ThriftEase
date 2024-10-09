@@ -1,0 +1,5 @@
+export type Expect = {
+  icon: string;
+  name: string;
+  desc: string;
+};
