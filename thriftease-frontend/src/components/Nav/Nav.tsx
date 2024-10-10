@@ -8,7 +8,7 @@ const Nav = () => {
         ThriftEase.
       </Link>
       <div className="space-x-8 font-light">
-        <Link to={"/login"} className="font-bold text-appdarkblue">
+        <Link to={"/login"} className="font-bold text-white/70">
           Log in
         </Link>
         <Link

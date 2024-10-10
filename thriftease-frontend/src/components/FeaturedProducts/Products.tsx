@@ -8,12 +8,12 @@ const Products = (props: Props) => {
   const elementArr = [...Array(6).keys()];
 
   const ele = elementArr.map((element) => (
-    <Link to={""} className="relative rounded-xl shadow-xl">
+    <Link to={""} className="relative rounded-xl shadow-2xl">
       <SoldOut />
       <img
         src=""
         alt=""
-        className="w-full h-[120px] bg-slate-300 outline-transparent focus:outline-transparent border-transparent rounded-t-xl"
+        className="w-full h-[120px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent rounded-t-xl"
       />
       <div className="py-3 px-2 gap-2 flex flex-col home-background rounded-b-xl">
         <h2 className="font-semibold ">{"Name: " + element}</h2>

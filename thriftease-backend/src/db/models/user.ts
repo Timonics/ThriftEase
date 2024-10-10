@@ -1,18 +1,19 @@
 "use strict";
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/database";
-
-interface UserAttribute {
-  name: string;
-  email: string;
-  password: string;
-}
+import { UserAttribute } from "../../interfaces/thriftease-interface";
 
 interface UserModel extends Model<UserAttribute>, UserAttribute {}
 
 const User = sequelize.define<UserModel>(
   "User",
   {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,6 +26,10 @@ const User = sequelize.define<UserModel>(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    passwordHash: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
   {
     freezeTableName: true,

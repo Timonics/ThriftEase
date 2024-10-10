@@ -1,12 +1,15 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import googleLogo from "../../assets/googleLogo.png";
 import { FaFacebook } from "react-icons/fa";
 
 import { FormData } from "../../interfaces/thriftease-interface";
+import axios from "axios";
+import { config } from "../../config";
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -17,8 +20,16 @@ const Login: React.FC = () => {
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const api = config.dbURL;
+    try {
+      const logResponse = await axios.post(`${api}users/login`, formData);
+      alert("Sign in successful");
+      navigate("/");
+    } catch (err: any) {
+      console.log("Error: ", console.log(err.response.data.message));
+    }
   };
 
   return (
@@ -28,7 +39,10 @@ const Login: React.FC = () => {
           ThriftEase.
         </Link>
         <div className="flex flex-col items-center p-4 gap-3">
-          <form className="flex flex-col gap-2 w-full p-2">
+          <form
+            className="flex flex-col gap-2 w-full p-2"
+            onSubmit={handleSubmit}
+          >
             <h1 className="text-2xl font-bold text-appdarkblue">
               Login to your account
             </h1>
