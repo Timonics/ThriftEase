@@ -29,7 +29,7 @@ const Intro: React.FC = () => {
             </Link>
             <Link
               className="p-2 flex items-center justify-center rounded- w-[30%] shadow-xl shadow-gray-950/20 bg-[#2ECC71] text-[#34495E] font-bold transition ease-in-out duration-300 hover:bg-appdarkblue hover:text-appgreen"
-              to={""}
+              to={"register"}
             >
               Sign Up
             </Link>

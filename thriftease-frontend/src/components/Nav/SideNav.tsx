@@ -1,70 +1,108 @@
 import React from "react";
 import { NavLink, Outlet, Link } from "react-router-dom";
 
+import { TbHome } from "react-icons/tb";
+import { BiSearchAlt } from "react-icons/bi";
+import { TbShoppingCart } from "react-icons/tb";
+import { MdOutlineSell } from "react-icons/md";
+import { TbLayoutDashboard } from "react-icons/tb";
+import { TbCategory } from "react-icons/tb";
+import { MdOutlineAccountCircle } from "react-icons/md";
+import { TbHelp } from "react-icons/tb";
+import { TbSettings } from "react-icons/tb";
+
 const SideNav = () => {
   return (
-    <div className="flex flex-col h-full w-full px-4 gap-1.5 text-appdarkblue">
+    <div className="flex flex-col h-full w-full gap-1.5 text-appdarkblue pr-10">
       <NavLink
+        end
         to={"/home"}
-        className="p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        className={({ isActive }) =>
+          isActive
+            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        }
       >
+        <TbHome size={17} />
         Home
       </NavLink>
       <NavLink
-        to={""}
-        className="p-2 font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        to={"search"}
+        className={({ isActive }) =>
+          isActive
+            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        }
       >
+        <BiSearchAlt size={17} />
         Browse Items
       </NavLink>
       <NavLink
-        to={""}
-        className="p-2 font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        to={"dashboard"}
+        className={({ isActive }) =>
+          isActive
+            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        }
       >
-        My Cart
-      </NavLink>
-      <NavLink
-        to={""}
-        className="p-2 font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
-      >
-        Sell an Item
-      </NavLink>
-      <NavLink
-        to={""}
-        className="p-2 font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
-      >
+        <TbLayoutDashboard size={17} />
         DashBoard
       </NavLink>
       <NavLink
-        to={""}
-        className="p-2 font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        to={"listing"}
+        className={({ isActive }) =>
+          isActive
+            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        }
       >
-        Category
+        <MdOutlineSell size={17} />
+        Sell an Item
       </NavLink>
       <NavLink
-        to={""}
-        className="p-2 font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        to={"cart"}
+        className={({ isActive }) =>
+          isActive
+            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        }
       >
-        Premium-Deals
+        <TbShoppingCart size={17} />
+        My Cart
+      </NavLink>
+      <NavLink
+        to={"category"}
+        className={({ isActive }) =>
+          isActive
+            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+        }
+      >
+        <TbCategory size={17} />
+        Category
       </NavLink>
       <div className="absolute bottom-4 flex-col flex gap-1.5 w-[290px]">
-        <NavLink
+        <Link
           to={""}
-          className="p-2 font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+          className="p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         >
+          <MdOutlineAccountCircle size={17} />
           Account
-        </NavLink>
-        <NavLink
+        </Link>
+        <Link
           to={""}
-          className="p-2 font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+          className="p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         >
+          <TbHelp size={17} />
           Help & Support
-        </NavLink>
-        <NavLink
+        </Link>
+        <Link
           to={""}
-          className="p-2 font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
+          className="p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         >
+          <TbSettings size={17} />
           Settings
-        </NavLink>
+        </Link>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "../Nav/Nav";
 import SideNav from "../Nav/SideNav";
-import HomeBody from "./HomeBody";
+import { Outlet } from "react-router-dom";
 
 const Home: React.FC = () => {
   return (
@@ -14,8 +14,8 @@ const Home: React.FC = () => {
           <section className="w-1/4">
             <SideNav />
           </section>
-          <section className="w-3/4">
-            <HomeBody />
+          <section className="w-3/4 overflow-y-auto my-scrollbar h-auto">
+            <Outlet />
           </section>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <div className="flex justify-between m-4">
+    <div className="flex justify-between p-4">
       <Link to={"/"} className="font-black text-appgreen">
         ThriftEase.
       </Link>
@@ -12,7 +12,7 @@ const Nav = () => {
           Log in
         </Link>
         <Link
-          to={"register"}
+          to={"/register"}
           className="py-2 px-5 border-4 border-appdarkblue font-extrabold bg-appgreen text-appdarkblue transition ease-in-out duration-500 hover:bg-appblue"
         >
           Register

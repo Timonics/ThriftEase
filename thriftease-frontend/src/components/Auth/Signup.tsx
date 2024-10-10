@@ -4,7 +4,7 @@ type Props = {}
 
 const Signup = (props: Props) => {
   return (
-    <div className='h-screen ggg'>Signup</div>
+    <div className='h-screen auth-background'>Signup</div>
   )
 }
 
