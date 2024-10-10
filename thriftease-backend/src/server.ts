@@ -1,17 +1,21 @@
-import express, { Request, Response } from "express";
+import express from "express";
 const app = express();
 
-import * as dotenv from "dotenv"
+import * as dotenv from "dotenv";
 import morgan from "morgan";
 
-dotenv.config()
+dotenv.config();
+app.use(express.json());
 app.use(morgan("dev"));
 
-const PORT: string | number = process.env.PORT || 30;
+const PORT: string | number = process.env.PORT || 3000;
+const api = process.env.API_BASE_URL;
 
-app.get("/", (req: Request, res: Response) => {
-  res.status(200).json({ message: "Welcome" });
-});
+import userRoutes from "./routes/userRoutes";
+
+app.use(`${api}users`, userRoutes);
+
+
 
 app.listen(PORT, () => {
   console.log(`Server running on PORT: ${PORT}`);

@@ -8,3 +8,11 @@
 body {
   font-family: Poppins, sans-serif;
 }
+
+.home-background {
+  background: linear-gradient(135deg, #FFFFFF, #d9fff8 );
+}
+
+.auth-background {
+  background: linear-gradient(145deg, #4c9f6fb6, #e9eefa );
+}
