@@ -26,7 +26,7 @@ const Login: React.FC = () => {
     try {
       const logResponse = await axios.post(`${api}users/login`, formData);
       alert("Sign in successful");
-      navigate("/");
+      navigate("/home");
     } catch (err: any) {
       console.log("Error: ", console.log(err.response.data.message));
     }

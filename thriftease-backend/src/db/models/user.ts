@@ -21,6 +21,7 @@ const User = sequelize.define<UserModel>(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
@@ -35,5 +36,7 @@ const User = sequelize.define<UserModel>(
     freezeTableName: true,
   }
 );
+
+
 
 export { User };

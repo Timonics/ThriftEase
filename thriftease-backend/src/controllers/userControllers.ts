@@ -1,13 +1,15 @@
 import { Request, Response, NextFunction } from "express";
 import { User } from "../db/models/user";
-import { NewUser } from "../interfaces/thriftease-interface";
+import { UserAttribute } from "../interfaces/thriftease-interface";
 
 import { compareSync, hashSync } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
 const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const allUsers = await User.findAll();
+    const allUsers = await User.findAll({
+      attributes: ["id", "name", "email"],
+    });
     if (allUsers.length === 0 || !allUsers) {
       res.status(400).send("No Users Found");
       return;
@@ -26,7 +28,7 @@ const createNewUser = async (
   try {
     const { id, name, email, password } = req.body;
 
-    const newUser: NewUser = {
+    const newUser: UserAttribute = {
       id,
       name,
       email,
