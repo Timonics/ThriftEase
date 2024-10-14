@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {}
 
-const Search = (props: Props) => {
+const Search: React.FC = (props: Props) => {
   return (
     <div>Search</div>
   )

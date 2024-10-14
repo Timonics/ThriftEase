@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import { useMyContext } from "../../context/MyAppDataProvider";
+import ListAuthMsg from "./ListAuthMsg";
 
-type Props = {}
+type Props = {};
 
-const SellAnItem = (props: Props) => {
+const SellAnItem: React.FC = (props: Props) => {
+  const { isAuthenticated } = useMyContext();
   return (
-    <div>SellAnItem</div>
-  )
-}
+    <div className="h-full p-1">
+      {isAuthenticated ? <div></div> : <ListAuthMsg />}
+    </div>
+  );
+};
 
-export default SellAnItem
+export default SellAnItem;

@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import { useMyContext } from "../../context/MyAppDataProvider";
+import EmptyDash from "./EmptyDash";
 
-type Props = {}
+type Props = {};
 
-const DashBoard = (props: Props) => {
+const DashBoard: React.FC = (props: Props) => {
+  const { isAuthenticated } = useMyContext();
   return (
-    <div>DashBoard</div>
-  )
-}
+    <div className="h-full p-1">
+      {isAuthenticated ? <div></div> : <EmptyDash />}
+    </div>
+  );
+};
 
-export default DashBoard
+export default DashBoard;

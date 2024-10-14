@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Products from "../FeaturedProducts/Products";
 import Explore from "../Category/Explore";
+import { useMyContext } from "../../context/MyAppDataProvider";
 
 const HomeBody: React.FC = () => {
   return (
@@ -18,8 +19,8 @@ const HomeBody: React.FC = () => {
           longer need, you've come to the right place!
         </p>
       </div>
-      <Explore />
       <Products />
+      <Explore />
     </div>
   );
 };

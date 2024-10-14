@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 type Props = {};
 
-const Explore = (props: Props) => {
+const Explore: React.FC = (props: Props) => {
   return (
     <div className="flex flex-col gap-5 items-center justify-center auth-background h-[220px]">
       <div className="text-center">

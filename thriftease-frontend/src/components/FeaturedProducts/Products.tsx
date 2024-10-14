@@ -4,18 +4,18 @@ import SoldOut from "../Badge/SoldOut";
 
 type Props = {};
 
-const Products = (props: Props) => {
+const Products: React.FC = (props: Props) => {
   const elementArr = [...Array(6).keys()];
 
   const ele = elementArr.map((element) => (
-    <Link to={""} className="relative rounded-xl shadow-2xl">
+    <Link to={""} className="relative shadow-slate-500 shadow-2xl">
       <SoldOut />
       <img
         src=""
         alt=""
-        className="w-full h-[120px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent rounded-t-xl"
+        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent"
       />
-      <div className="py-3 px-2 gap-2 flex flex-col home-background rounded-b-xl">
+      <div className="py-3 px-2 gap-2 flex flex-col product-background">
         <h2 className="font-semibold ">{"Name: " + element}</h2>
         <p className="text-xs font-light">{"Description: " + element}</p>
         <p className="text-sm font-extrabold">{"Price: $" + element}</p>
@@ -28,7 +28,7 @@ const Products = (props: Props) => {
       <h1 className="text-4xl font-bold text-appgreen">
         Check out our featured products
       </h1>
-      <div className="grid grid-cols-3 gap-12">{ele}</div>
+      <div className="grid grid-cols-3 gap-10 gap-y-12">{ele}</div>
     </div>
   );
 };

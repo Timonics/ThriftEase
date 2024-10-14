@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   return (
     <div className="h-screen home-background">
       <div className="h-[510px]">
-        <div className="p-4">
+        <div className="p-2">
           <Nav />
         </div>
         <div className="flex h-full">

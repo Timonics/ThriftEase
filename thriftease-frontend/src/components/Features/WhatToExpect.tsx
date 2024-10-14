@@ -1,6 +1,6 @@
 import React from "react";
 
-const WhatToExpect = () => {
+const WhatToExpect: React.FC = () => {
   type Expect = {
     icon: string;
     name: string;
@@ -38,7 +38,7 @@ const WhatToExpect = () => {
           {item.icon}
           <h3 className="text-xl font-bold">{item.name}</h3>
         </div>
-        <p className="text-sm font-light font-inter">{item.desc}</p>
+        <p className="text-sm font-light">{item.desc}</p>
       </div>
     </div>
   ));

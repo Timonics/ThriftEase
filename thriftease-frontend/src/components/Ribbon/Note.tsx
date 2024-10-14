@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Note = () => {
+const Note: React.FC = () => {
   return (
     <div className="flex flex-col h-[300px] gap-10 justify-center items-center bg-[#34495E] font-poppins">
       <h3 className="w-4/5 text-center text-2xl font-bold text-slate-300 ">

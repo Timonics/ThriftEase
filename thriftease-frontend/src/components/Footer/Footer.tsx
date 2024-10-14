@@ -6,7 +6,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <div className="flex flex-col p-5 gap-10 items-center pt-5 bg-slate-100">
       <Link

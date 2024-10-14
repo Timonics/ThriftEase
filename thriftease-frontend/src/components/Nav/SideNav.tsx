@@ -11,15 +11,15 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { TbHelp } from "react-icons/tb";
 import { TbSettings } from "react-icons/tb";
 
-const SideNav = () => {
+const SideNav: React.FC = () => {
   return (
-    <div className="flex flex-col h-full w-full gap-1.5 text-appdarkblue pr-10">
+    <div className="flex flex-col h-full w-full gap-1.5 text-appdarkblue">
       <NavLink
         end
         to={"/home"}
         className={({ isActive }) =>
           isActive
-            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            ? "p-2 sidenav-background flex gap-1 items-center font-semibold pl-5 text-xs"
             : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         }
       >
@@ -30,7 +30,7 @@ const SideNav = () => {
         to={"search"}
         className={({ isActive }) =>
           isActive
-            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            ? "p-2 sidenav-background flex gap-1 items-center font-semibold pl-5 text-xs"
             : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         }
       >
@@ -41,7 +41,7 @@ const SideNav = () => {
         to={"dashboard"}
         className={({ isActive }) =>
           isActive
-            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            ? "p-2 sidenav-background flex gap-1 items-center font-semibold pl-5 text-xs"
             : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         }
       >
@@ -52,7 +52,7 @@ const SideNav = () => {
         to={"listing"}
         className={({ isActive }) =>
           isActive
-            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            ? "p-2 sidenav-background flex gap-1 items-center font-semibold pl-5 text-xs"
             : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         }
       >
@@ -63,7 +63,7 @@ const SideNav = () => {
         to={"cart"}
         className={({ isActive }) =>
           isActive
-            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            ? "p-2 sidenav-background flex gap-1 items-center font-semibold pl-5 text-xs"
             : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         }
       >
@@ -74,7 +74,7 @@ const SideNav = () => {
         to={"category"}
         className={({ isActive }) =>
           isActive
-            ? "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-500 ease-in-out bg-appgreen"
+            ? "p-2 sidenav-background flex gap-1 items-center font-semibold pl-5 text-xs"
             : "p-2 flex gap-1 items-center font-semibold pl-5 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         }
       >

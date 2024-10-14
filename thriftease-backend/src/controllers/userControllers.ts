@@ -40,7 +40,12 @@ const createNewUser = async (
       res.status(400).send("User Not Created");
       return;
     }
-    res.status(201).json({ success: true, user: newuser });
+    res
+      .status(201)
+      .json({
+        success: true,
+        user: { id: newuser.id, name: newUser.name, email: newuser.email },
+      });
   } catch (err) {
     console.error("Err: ", err);
   }
