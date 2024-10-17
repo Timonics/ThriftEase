@@ -10,14 +10,14 @@ const Nav: React.FC = () => {
         ThriftEase.
       </Link>
       <div className="space-x-8 font-light">
-        <Link to={"/login"} className="font-bold text-white/70">
+        {/* <Link to={"/login"} className="font-bold text-white/70">
           Log in
-        </Link>
+        </Link> */}
         <Link
-          to={"/register"}
-          className="py-2 px-5 border-4 border-appdarkblue font-extrabold bg-appgreen text-appdarkblue transition ease-in-out duration-500 hover:bg-appblue"
+          to={"/login"}
+          className="py-2 px-6 border-4 border-appdarkblue font-extrabold bg-appgreen text-appdarkblue transition ease-in-out duration-500 hover:bg-appblue"
         >
-          Register
+          Login
         </Link>
         <Link to={"cart"}>Cart</Link>
       </div>

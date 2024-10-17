@@ -11,10 +11,16 @@ export interface CategoryAttribute {
   name: string;
 }
 
+export interface SubCategoryAttribute {
+  id: number;
+  name: string;
+}
+
 export interface ProductAttribute {
   id: number;
   name: string;
   categoryId: number;
+  subCategoryId: number
   ownerId: number;
   price: number;
   //description: string;

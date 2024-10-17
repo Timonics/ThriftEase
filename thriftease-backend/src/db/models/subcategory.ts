@@ -1,12 +1,13 @@
+"use strict";
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/database";
-import { CategoryAttribute } from "../../interfaces/thriftease-interface";
-import { SubCategory } from "./subcategory";
 
-interface CategoryModel extends Model<CategoryAttribute>, CategoryAttribute {}
+import {SubCategoryAttribute} from "../../interfaces/thriftease-interface"
 
-const Category = sequelize.define<CategoryModel>(
-  "Category",
+interface SubCategoryModel extends Model<SubCategoryAttribute>,  SubCategoryAttribute {}
+
+const SubCategory = sequelize.define<SubCategoryModel>(
+  "SubCategory",
   {
     id: {
       allowNull: false,
@@ -16,9 +17,9 @@ const Category = sequelize.define<CategoryModel>(
     },
     name: {
       type: DataTypes.STRING,
-    },
+    }
   },
   { freezeTableName: true }
 );
 
-export { Category };
+export { SubCategory };

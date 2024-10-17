@@ -12,7 +12,7 @@ router.get("/", getAllCategory);
 router.post("/", createNewCategory);
 
 router
-  .route("/:userID")
+  .route("/:categoryID")
   .get(getSingleCategory)
   .put(updateCategory)
   .delete(deleteCategory);

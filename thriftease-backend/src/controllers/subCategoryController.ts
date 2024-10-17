@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { Category } from "../db/models/category";
-import { CategoryAttribute } from "../interfaces/thriftease-interface";
+import { SubCategory } from "../db/models/subcategory";
+import { SubCategoryAttribute } from "../interfaces/thriftease-interface";
 
-const getAllCategory = async (req: Request, res: Response) => {
+const getAllSubCategory = async (req: Request, res: Response) => {
   try {
-    const categories = await Category.findAll();
+    const categories = await SubCategory.findAll();
     if (!categories || categories.length === 0) {
       res.status(404).json({ success: false, message: "No Categories Found" });
     }
@@ -13,10 +13,10 @@ const getAllCategory = async (req: Request, res: Response) => {
     console.error("Error: ", err);
   }
 };
-const getSingleCategory = async (req: Request, res: Response) => {
+const getSingleSubCategory = async (req: Request, res: Response) => {
   try {
-    const { categoryID } = req.params;
-    const category = await Category.findByPk(categoryID);
+    const { subCategoryID } = req.params;
+    const category = await SubCategory.findByPk(subCategoryID);
     if (!category) {
       res.status(404).json({ success: false, message: "Categories Not Found" });
     }
@@ -25,11 +25,11 @@ const getSingleCategory = async (req: Request, res: Response) => {
     console.error("Error: ", err);
   }
 };
-const createNewCategory = async (req: Request, res: Response) => {
+const createNewSubCategory = async (req: Request, res: Response) => {
   try {
     const { id, name } = req.body;
-    const categoryData: CategoryAttribute = { id, name };
-    const newCategories = await Category.create(categoryData);
+    const categoryData: SubCategoryAttribute = { id, name };
+    const newCategories = await SubCategory.create(categoryData);
     if (!newCategories) {
       res
         .status(404)
@@ -40,15 +40,15 @@ const createNewCategory = async (req: Request, res: Response) => {
     console.error("Error: ", err);
   }
 };
-const updateCategory = async (req: Request, res: Response) => {
+const updateSubCategory = async (req: Request, res: Response) => {
   try {
-    const { categoryID } = req.params;
+    const { subCategoryID } = req.params;
     const { name } = req.body;
-    const updatedCategory = await Category.update(
+    const updatedCategory = await SubCategory.update(
       {
         name,
       },
-      { where: { id: categoryID } }
+      { where: { id: subCategoryID } }
     );
     if (!updatedCategory) {
       res
@@ -60,10 +60,12 @@ const updateCategory = async (req: Request, res: Response) => {
     console.error("Error: ", err);
   }
 };
-const deleteCategory = async (req: Request, res: Response) => {
+const deleteSubCategory = async (req: Request, res: Response) => {
   try {
-    const { categoryID } = req.params;
-    const deletedCategory = await Category.destroy({ where: { id: categoryID } });
+    const { subCategoryID } = req.params;
+    const deletedCategory = await SubCategory.destroy({
+      where: { id: subCategoryID },
+    });
 
     if (!deletedCategory) {
       res
@@ -77,9 +79,9 @@ const deleteCategory = async (req: Request, res: Response) => {
 };
 
 export {
-  getAllCategory,
-  getSingleCategory,
-  createNewCategory,
-  updateCategory,
-  deleteCategory,
+  getAllSubCategory,
+  getSingleSubCategory,
+  createNewSubCategory,
+  updateSubCategory,
+  deleteSubCategory,
 };

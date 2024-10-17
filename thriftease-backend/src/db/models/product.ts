@@ -4,6 +4,7 @@ import sequelize from "../config/database";
 import { ProductAttribute } from "../../interfaces/thriftease-interface";
 import { User } from "./user";
 import { Category } from "./category";
+import { SubCategory } from "./subcategory";
 
 interface ProductModel extends Model<ProductAttribute>, ProductAttribute {}
 
@@ -25,6 +26,9 @@ const Product = sequelize.define<ProductModel>(
     categoryId: {
       type: DataTypes.INTEGER,
     },
+    subCategoryId: {
+      type: DataTypes.INTEGER
+    },
     ownerId: {
       type: DataTypes.INTEGER,
     },
@@ -39,5 +43,8 @@ Product.belongsTo(User, { foreignKey: "ownerId", as: "user" });
 
 Category.hasMany(Product, { foreignKey: "categoryId", as: "products" });
 Product.belongsTo(Category, { foreignKey: "categoryId", as: "category" });
+
+SubCategory.hasMany(Product, { foreignKey: "subCategoryId", as: "products" })
+Product.belongsTo(SubCategory, { foreignKey: "subCategoryId", as: "subCategory" })
 
 export { Product };

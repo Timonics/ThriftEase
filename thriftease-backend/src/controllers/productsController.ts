@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Product } from "../db/models/product";
 import { Category } from "../db/models/category";
 import { User } from "../db/models/user";
+import { SubCategory } from "../db/models/subcategory";
 
 const getAllProducts = async (req: Request, res: Response) => {
   try {
@@ -16,6 +17,11 @@ const getAllProducts = async (req: Request, res: Response) => {
           model: User,
           as: "user",
           attributes: ["id", "name", "email"],
+        },
+        {
+          model: SubCategory,
+          as: "subCategory",
+          attributes: ["id", "name"],
         },
       ],
     });
@@ -46,12 +52,20 @@ const getAProduct = async (req: Request, res: Response) => {
 
 const createNewProduct = async (req: Request, res: Response) => {
   try {
-    const { id, name, categoryId, ownerId, price } = req.body;
+    const { id, name, categoryId, subCategoryId, ownerId, price } = req.body;
+
     const category = await Category.findByPk(categoryId);
     if (!category) {
       res.status(404).json({ message: "Category not found" });
       return;
     }
+
+    const subCategory = await SubCategory.findByPk(subCategoryId);
+    if (!subCategory) {
+      res.status(404).json({ message: "Sub-Category not found" });
+      return;
+    }
+
     const user = await User.findByPk(ownerId);
     if (!user) {
       res.status(404).json({ message: "User not found" });
@@ -61,6 +75,7 @@ const createNewProduct = async (req: Request, res: Response) => {
       id,
       name,
       categoryId,
+      subCategoryId,
       ownerId,
       price,
     });
