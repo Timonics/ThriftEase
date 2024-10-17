@@ -36,6 +36,53 @@ const getAllProducts = async (req: Request, res: Response) => {
   }
 };
 
+const getCategoryProducts = async (req: Request, res: Response) => {
+  try {
+    const { categoryName } = req.params;
+    const nameArr = categoryName.split("-");
+
+    nameArr[1] = "&";
+    let newArr: string[] = [];
+
+    nameArr.forEach((item) => {
+      const capitalized = item.charAt(0).toUpperCase() + item.slice(1);
+      newArr.push(capitalized);
+    });
+
+    const cateName = newArr.join(" ");
+
+    const categoryProducts = await Product.findAll({
+      include: [
+        {
+          model: Category,
+          as: "category",
+          attributes: ["id", "name"],
+        },
+        {
+          model: User,
+          as: "user",
+          attributes: ["id", "name", "email"],
+        },
+        {
+          model: SubCategory,
+          as: "subCategory",
+          attributes: ["id", "name"],
+        },
+      ],
+      where: {
+        "$category.name$": cateName,
+      },
+    });
+    if (!categoryProducts || categoryProducts.length === 0) {
+      res.status(404).json({ message: "No products found" });
+      return;
+    }
+    res.status(200).json({ success: true, products: categoryProducts });
+  } catch (err) {
+    console.error("Error: ", err);
+  }
+};
+
 const getAProduct = async (req: Request, res: Response) => {
   try {
     const { productID } = req.params;
@@ -151,6 +198,7 @@ const deleteProduct = async (req: Request, res: Response) => {
 
 export {
   getAllProducts,
+  getCategoryProducts,
   createNewProduct,
   getAProduct,
   deleteProduct,

@@ -11,10 +11,10 @@ const Home: React.FC = () => {
           <Nav />
         </div>
         <div className="flex h-full">
-          <section className="w-1/4">
+          <section className="w-1/5">
             <SideNav />
           </section>
-          <section className="w-3/4 overflow-y-auto my-scrollbar h-auto">
+          <section className="w-4/5 overflow-y-auto my-scrollbar h-auto">
             <Outlet />
           </section>
         </div>

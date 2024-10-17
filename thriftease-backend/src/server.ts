@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-const PORT: string | number = process.env.PORT || 3000;
+const PORT: string | number = process.env.PORT || 4000;
 const api = process.env.API_BASE_URL;
 
 import userRoutes from "./routes/userRoutes";

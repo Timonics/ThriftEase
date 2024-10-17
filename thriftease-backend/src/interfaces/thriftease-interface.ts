@@ -20,9 +20,11 @@ export interface ProductAttribute {
   id: number;
   name: string;
   categoryId: number;
-  subCategoryId: number
+  subCategoryId: number;
   ownerId: number;
   price: number;
+  category?: CategoryAttribute;
+
   //description: string;
   //negotiable: boolean;
   //condition: 'New' | 'Like New' | 'Good' | 'Fair' | 'Poor';

@@ -13,15 +13,15 @@ import Cart from "./components/Cart/Cart";
 import Category from "./components/Category/Category";
 import Search from "./components/Search/Search";
 import Categories from "./components/Category/Categories/container/Categories";
-import ElectronicsCat from "./components/Category/Electronics/ElectronicsCat";
-import FashionCat from "./components/Category/Fashion/FashionCat";
-import HomeCat from "./components/Category/Home/HomeCat";
-import BooksCat from "./components/Category/Books/BooksCat";
-import SportsCat from "./components/Category/Sports/SportsCat";
-import MusicCat from "./components/Category/Music/MusicCat";
-import BeautyCat from "./components/Category/Beauty/BeautyCat";
-import AutoMobileCat from "./components/Category/Automobile/AutoMobileCat";
-import Miscellaneous from "./components/Category/Miscellaneous/Miscellaneous";
+import ElectronicsCat from "./components/SubCategory/Electronics/ElectronicsCat";
+import FashionCat from "./components/SubCategory/Fashion/FashionCat";
+import HomeCat from "./components/SubCategory/Home/HomeCat";
+import BooksCat from "./components/SubCategory/Books/BooksCat";
+import SportsCat from "./components/SubCategory/Sports/SportsCat";
+import MusicCat from "./components/SubCategory/Music/MusicCat";
+import BeautyCat from "./components/SubCategory/Beauty/BeautyCat";
+import AutoMobileCat from "./components/SubCategory/Automobile/AutoMobileCat";
+import Miscellaneous from "./components/SubCategory/Miscellaneous/Miscellaneous";
 
 const App: React.FC = () => {
   return (

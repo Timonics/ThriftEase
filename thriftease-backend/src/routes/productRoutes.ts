@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import {
   getAllProducts,
+  getCategoryProducts,
   createNewProduct,
   getAProduct,
   deleteProduct,
@@ -9,6 +10,7 @@ import {
 } from "../controllers/productsController";
 
 router.get("/", getAllProducts);
+router.get("/categories/:categoryName", getCategoryProducts)
 router.post("/", createNewProduct);
 
 router

@@ -1,3 +1,4 @@
 export const config = {
-  dbURL: "http://localhost:3000/api/v1/",
+  dbURL: "http://localhost:4000/api/v1/",
+  
 };

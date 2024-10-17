@@ -2,7 +2,6 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Nav from "../../../Nav/Nav";
 import SideCatNav from "../SideCatNav";
-import SubCatHome from "../SubCatHome";
 
 const Categories = () => {
   return (
@@ -11,10 +10,10 @@ const Categories = () => {
         <Nav />
       </div>
       <div className="flex h-[88%]">
-        <section className="w-1/4">
+        <section className="w-1/5">
           <SideCatNav />
         </section>
-        <section className="w-3/4 overflow-y-auto my-scrollbar h-auto">
+        <section className="w-4/5 overflow-y-auto my-scrollbar h-auto px-4">
           <Outlet />
         </section>
       </div>

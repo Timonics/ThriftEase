@@ -27,3 +27,16 @@ export interface UserProfile {
 export interface MyAppProviderProps {
   children: ReactNode;
 }
+
+export interface UserInfo {
+  id: number;
+  name: string;
+  email: string;
+}
+
+export interface Product {
+  id: number;
+  name: string;
+  price: number;
+  owner: UserInfo;
+}
