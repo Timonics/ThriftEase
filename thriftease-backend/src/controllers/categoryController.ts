@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Category } from "../db/models/category";
 import { CategoryAttribute } from "../interfaces/thriftease-interface";
+import { SubCategory } from "../db/models/subcategory";
 
 const getAllCategory = async (req: Request, res: Response) => {
   try {
@@ -29,11 +30,13 @@ const createNewCategory = async (req: Request, res: Response) => {
   try {
     const { id, name } = req.body;
     const categoryData: CategoryAttribute = { id, name };
+
     const newCategories = await Category.create(categoryData);
     if (!newCategories) {
       res
         .status(404)
         .json({ success: false, message: "Categories Not Created" });
+      return;
     }
     res.status(200).json({ success: true, categories: newCategories });
   } catch (err) {
@@ -63,7 +66,9 @@ const updateCategory = async (req: Request, res: Response) => {
 const deleteCategory = async (req: Request, res: Response) => {
   try {
     const { categoryID } = req.params;
-    const deletedCategory = await Category.destroy({ where: { id: categoryID } });
+    const deletedCategory = await Category.destroy({
+      where: { id: categoryID },
+    });
 
     if (!deletedCategory) {
       res

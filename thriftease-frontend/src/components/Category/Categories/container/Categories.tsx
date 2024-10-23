@@ -5,7 +5,7 @@ import SideCatNav from "../SideCatNav";
 
 const Categories = () => {
   return (
-    <div className="h-screen">
+    <div className="h-screen home-background">
       <div className="h-[12%] w-full p-2">
         <Nav />
       </div>

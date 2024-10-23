@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 const Home: React.FC = () => {
   return (
     <div className="h-screen home-background">
-      <div className="h-[510px]">
+      <div className="h-[526px]">
         <div className="p-2">
           <Nav />
         </div>

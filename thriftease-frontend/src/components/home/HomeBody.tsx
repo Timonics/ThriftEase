@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Products from "../FeaturedProducts/Products";
 import Explore from "../Category/Explore";
-import { useMyContext } from "../../context/MyAppDataProvider";
 
 const HomeBody: React.FC = () => {
   return (

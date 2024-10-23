@@ -40,12 +40,10 @@ const createNewUser = async (
       res.status(400).send("User Not Created");
       return;
     }
-    res
-      .status(201)
-      .json({
-        success: true,
-        user: { id: newuser.id, name: newUser.name, email: newuser.email },
-      });
+    res.status(201).json({
+      success: true,
+      user: { id: newuser.id, name: newUser.name, email: newuser.email },
+    });
   } catch (err) {
     console.error("Err: ", err);
   }
@@ -128,6 +126,8 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
         user: {
           token: token,
           id: userExists.id,
+          name: userExists.name,
+          email: userExists.email,
         },
       });
     } else {

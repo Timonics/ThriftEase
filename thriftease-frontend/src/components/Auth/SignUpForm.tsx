@@ -48,7 +48,7 @@ const SignUpForm: React.FC = (props: Props) => {
 
       setUserProfile(userData);
       setIsAuthenticated(true);
-      navigate("/home")
+      navigate("/home");
     } catch (err) {
       console.error("Error: ", err);
     }

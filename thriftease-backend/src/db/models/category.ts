@@ -21,4 +21,5 @@ const Category = sequelize.define<CategoryModel>(
   { freezeTableName: true }
 );
 
+
 export { Category };

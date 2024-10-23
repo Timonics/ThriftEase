@@ -30,8 +30,8 @@ const Intro: React.FC = () => {
               alt=""
               className="object-cover h-full w-full"
             />
-            <div className="absolute h-full w-full inset-0 bg-black/75 " />
-          </div>
+`            <div className="absolute h-full w-full inset-0 bg-black/75 " />
+`          </div>
           <div className="p-4 shadow-slate-400 h-screen shadow-xl">
             <Nav />
             <div className="flex flex-col justify-center items-center h-[420px] gap-5">

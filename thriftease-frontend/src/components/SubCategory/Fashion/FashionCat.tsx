@@ -8,11 +8,11 @@ import SoldOut from "../../Badge/SoldOut";
 
 type Props = {};
 
-const FashionCat = (props: Props) => {
+const FashionCat: React.FC = (props: Props) => {
   const api = config.dbURL;
   const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
 
-  const getElectronicsProducts = async () => {
+  const getFashionProducts = async () => {
     try {
       const categoryResponse = await axios.get(
         `${api}products/categories/fashion-and-apparels`
@@ -24,10 +24,10 @@ const FashionCat = (props: Props) => {
   };
 
   useEffect(() => {
-    getElectronicsProducts();
+    getFashionProducts();
   }, []);
 
-  const categoryProductsElements = categoryProducts.map((product) => (
+  const fashionProductsElements = categoryProducts.map((product) => (
     <Link to={""} className="relative shadow-slate-300/75 shadow-xl w-[220px]">
       <SoldOut />
       <img
@@ -45,7 +45,7 @@ const FashionCat = (props: Props) => {
   return (
     <div className="flex flex-col gap-7">
       <SubFashionCat />
-      <div className="flex p-4 gap-10">{categoryProductsElements}</div>
+      <div className="flex p-4 gap-10">{fashionProductsElements}</div>
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { MdSell } from "react-icons/md";
-
 import { LoginData } from "../../interfaces/thriftease-interface";
 import axios from "axios";
 import { config } from "../../config";
 import Logo from "../Badge/Logo";
 import Oauth from "./Oauth";
+import { useMyContext } from "../../context/MyAppDataProvider";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
+  const { setIsAuthenticated, setUserProfile } = useMyContext();
   const [loginData, setLoginData] = useState<LoginData>({
     email: "",
     password: "",
@@ -26,7 +26,14 @@ const Login: React.FC = () => {
     const api = config.dbURL;
     try {
       const logResponse = await axios.post(`${api}users/login`, loginData);
-      alert("Sign in successful");
+      const userData = logResponse.data.user;
+
+      setIsAuthenticated(true);
+      setUserProfile({
+        id: userData.id,
+        name: userData.name,
+        email: userData.email,
+      });
       navigate("/home");
     } catch (err: any) {
       console.log("Error: ", console.log(err.response.data.message));
@@ -70,9 +77,14 @@ const Login: React.FC = () => {
           </form>
           <p className="text-xs text-appdarkblue/85">
             Don't have a{" "}
-            <span className="text-appgreen font-bold text-sm ">ThriftEase.</span>{" "}
+            <span className="text-appgreen font-bold text-sm ">
+              ThriftEase.
+            </span>{" "}
             account?{" "}
-            <Link to="/register" className="underline underline-offset-1 text-appdarkblue font-bold">
+            <Link
+              to="/register"
+              className="underline underline-offset-1 text-appdarkblue font-bold"
+            >
               Sign up
             </Link>
           </p>

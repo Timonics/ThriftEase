@@ -1,4 +1,4 @@
-import { ReactNode, SetStateAction } from "react";
+import { ReactNode } from "react";
 
 export interface LoginData {
   email: string;
@@ -39,4 +39,12 @@ export interface Product {
   name: string;
   price: number;
   owner: UserInfo;
+}
+
+export interface ProductInfo {
+  name: string;
+  categoryId: number;
+  subCategoryId: number;
+  ownerId: number;
+  price: number;
 }
