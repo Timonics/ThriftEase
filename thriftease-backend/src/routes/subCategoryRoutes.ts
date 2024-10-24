@@ -6,6 +6,7 @@ import {
   createNewSubCategory,
   updateSubCategory,
   deleteSubCategory,
+  getSubCategoryByCategory
 } from "../controllers/subCategoryController";
 
 router.get("/", getAllSubCategory);
@@ -16,5 +17,7 @@ router
   .get(getSingleSubCategory)
   .put(updateSubCategory)
   .delete(deleteSubCategory);
+
+router.get("/category/:categoryID", getSubCategoryByCategory)
 
 export default router;

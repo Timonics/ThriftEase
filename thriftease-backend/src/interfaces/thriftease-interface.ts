@@ -14,6 +14,7 @@ export interface CategoryAttribute {
 export interface SubCategoryAttribute {
   id: number;
   name: string;
+  categoryId: number
 }
 
 export interface ProductAttribute {

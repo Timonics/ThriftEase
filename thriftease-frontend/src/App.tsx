@@ -13,17 +13,12 @@ import Cart from "./components/Cart/Cart";
 import Category from "./components/Category/Category";
 import Search from "./components/Search/Search";
 import Categories from "./components/Category/Categories/container/Categories";
-import ElectronicsCat from "./components/SubCategory/Electronics/ElectronicsCat";
-import FashionCat from "./components/SubCategory/Fashion/FashionCat";
-import HomeCat from "./components/SubCategory/Home/HomeCat";
-import BooksCat from "./components/SubCategory/Books/BooksCat";
-import SportsCat from "./components/SubCategory/Sports/SportsCat";
-import MusicCat from "./components/SubCategory/Music/MusicCat";
-import BeautyCat from "./components/SubCategory/Beauty/BeautyCat";
-import AutoMobileCat from "./components/SubCategory/Automobile/AutoMobileCat";
-import Miscellaneous from "./components/SubCategory/Miscellaneous/Miscellaneous";
+import CategoryOutlet from "./components/Category/Categories/CategoryOutlet";
+import { useMyContext } from "./context/MyAppDataProvider";
 
 const App: React.FC = () => {
+  const { categories } = useMyContext();
+
   return (
     <Routes>
       <Route path="/" element={<Intro />} />
@@ -38,15 +33,18 @@ const App: React.FC = () => {
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Signup />} />
       <Route path="categories" element={<Categories />}>
-        <Route path="electronics-and-gadgets" element={<ElectronicsCat />} />
-        <Route path="fashion-and-apparels" element={<FashionCat />} />
-        <Route path="home-and-living" element={<HomeCat />} />
-        <Route path="books-and-stationery" element={<BooksCat />} />
-        <Route path="sports-and-outdoor" element={<SportsCat />} />
-        <Route path="music-and-instruments" element={<MusicCat />} />
-        <Route path="beauty-and-health" element={<BeautyCat />} />
-        <Route path="automobiles" element={<AutoMobileCat />} />
-        <Route path="miscellaneous" element={<Miscellaneous />} />
+        {categories.map((category) => {
+          const categoryName = category.name.split(" ");
+          categoryName[1] = "-and-";
+          const categoryPath = categoryName.join("").toLowerCase();
+          return (
+            <Route
+              key={category.id}
+              path={categoryPath}
+              element={<CategoryOutlet />}
+            />
+          );
+        })}
       </Route>
     </Routes>
   );

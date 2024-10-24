@@ -1,9 +1,13 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useMyContext } from "../../../context/MyAppDataProvider";
 
 type Props = {};
 
 const SubElectronicsCat = (props: Props) => {
+  const {categories} = useMyContext()
+  //console.log(categories);
+
   const location = useLocation();
   const activeLink = new URLSearchParams(location.search).get("subcategory");
 

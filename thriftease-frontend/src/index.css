@@ -114,7 +114,7 @@ body::-webkit-scrollbar-thumb:hover {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  height: 2px;
+  height: 3px;
   background-color: #3ef88bbc;
   animation: borderSpread 0.2s ease-in-out;
 }

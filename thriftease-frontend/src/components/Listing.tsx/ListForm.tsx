@@ -1,6 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import Logo from "../Badge/Logo";
-import { ProductInfo } from "../../interfaces/thriftease-interface";
 
 const ListForm: React.FC = () => {
   const [productInfo, setProductInfo] = useState({
@@ -10,7 +9,9 @@ const ListForm: React.FC = () => {
     price: 0,
   });
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+  ) => {
     const { name, value } = event.target;
     setProductInfo({
       ...productInfo,
@@ -21,14 +22,6 @@ const ListForm: React.FC = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
-
-  const categoryList = ["Electronics & Gadgets"]
-  const subCategoryList = ["Smartphones",
-    "Laptops",
-    "Tablets",
-    "Accessories",
-    "Cameras & Photography",
-    "Gaming Consoles"]
 
   return (
     <div className="flex flex-col gap-5">
@@ -64,8 +57,6 @@ const ListForm: React.FC = () => {
             />
             <select
               name="subCategoryId"
-              type=""
-              placeholder="Please"
               className=""
               value={productInfo.subCategoryId}
               onChange={handleChange}

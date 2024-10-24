@@ -16,6 +16,8 @@ const Category = sequelize.define<CategoryModel>(
     },
     name: {
       type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
     },
   },
   { freezeTableName: true }

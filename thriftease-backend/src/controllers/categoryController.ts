@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { Category } from "../db/models/category";
 import { CategoryAttribute } from "../interfaces/thriftease-interface";
-import { SubCategory } from "../db/models/subcategory";
 
 const getAllCategory = async (req: Request, res: Response) => {
   try {
@@ -30,6 +29,19 @@ const createNewCategory = async (req: Request, res: Response) => {
   try {
     const { id, name } = req.body;
     const categoryData: CategoryAttribute = { id, name };
+
+    const categoryNameExists = await Category.findOne({
+      where: {
+        name: categoryData.name,
+      },
+    });
+
+    if (categoryNameExists) {
+      res
+        .status(400)
+        .json({ success: false, message: "Category Name Already Exists" });
+      return;
+    }
 
     const newCategories = await Category.create(categoryData);
     if (!newCategories) {

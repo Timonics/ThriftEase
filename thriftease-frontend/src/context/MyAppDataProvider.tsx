@@ -1,20 +1,44 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   MyAppProviderProps,
   MyAppContext,
   UserProfile,
+  Category,
 } from "../interfaces/thriftease-interface";
+import { config } from "../config";
+import axios from "axios";
 
 const MyContext = createContext<MyAppContext | undefined>(undefined);
 
 const MyAppDataProvider: React.FC<MyAppProviderProps> = ({ children }) => {
+  const dbURL = config.dbURL;
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSignUpFormOpen, setIsSignUpFormOpen] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([
+    {
+      id: 0,
+      name: "",
+    },
+  ]);
   const [userProfile, setUserProfile] = useState<UserProfile>({
     id: 0,
     name: "",
     email: "",
   });
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(`${dbURL}categories`);
+      setCategories(response.data.categories);
+    } catch (err) {
+      console.error("Error: ", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   const contextValues = {
     isAuthenticated,
     setIsAuthenticated,
@@ -22,6 +46,7 @@ const MyAppDataProvider: React.FC<MyAppProviderProps> = ({ children }) => {
     setIsSignUpFormOpen,
     userProfile,
     setUserProfile,
+    categories,
   };
 
   return (
