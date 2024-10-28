@@ -9,8 +9,7 @@ import Oauth from "./Oauth";
 import { useMyContext } from "../../context/MyAppDataProvider";
 
 const Login: React.FC = () => {
-  const navigate = useNavigate();
-  const { setIsAuthenticated, setUserProfile } = useMyContext();
+  const { loginUser } = useMyContext();
   const [loginData, setLoginData] = useState<LoginData>({
     email: "",
     password: "",
@@ -23,21 +22,7 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const api = config.dbURL;
-    try {
-      const logResponse = await axios.post(`${api}users/login`, loginData);
-      const userData = logResponse.data.user;
-
-      setIsAuthenticated(true);
-      setUserProfile({
-        id: userData.id,
-        name: userData.name,
-        email: userData.email,
-      });
-      navigate("/home");
-    } catch (err: any) {
-      console.log("Error: ", console.log(err.response.data.message));
-    }
+    loginUser(loginData);
   };
 
   return (

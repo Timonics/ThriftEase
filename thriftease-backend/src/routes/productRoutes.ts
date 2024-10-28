@@ -10,7 +10,7 @@ import {
 } from "../controllers/productsController";
 
 router.get("/", getAllProducts);
-router.get("/categories/:categoryName", getCategoryProducts)
+router.get("/category/:categoryName", getCategoryProducts)
 router.post("/", createNewProduct);
 
 router

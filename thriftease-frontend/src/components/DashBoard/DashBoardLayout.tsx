@@ -1,17 +1,17 @@
 import React from "react";
 import { useMyContext } from "../../context/MyAppDataProvider";
-import ListAuthMsg from "./ListAuthMsg";
-import Listing from "./Listing";
+import EmptyDash from "./EmptyDash";
+import DashBoard from "./DashBoard";
 
 type Props = {};
 
-const SellAnItem: React.FC = (props: Props) => {
+const DashBoardLayout: React.FC = (props: Props) => {
   const { isAuthenticated } = useMyContext();
   return (
     <div className="h-full p-1">
-      {isAuthenticated ? <Listing /> : <ListAuthMsg />}
+      {isAuthenticated ? <DashBoard /> : <EmptyDash />}
     </div>
   );
 };
 
-export default SellAnItem;
+export default DashBoardLayout;

@@ -16,7 +16,9 @@ export interface MyAppContext {
   setIsSignUpFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
   userProfile: UserProfile;
   setUserProfile: React.Dispatch<React.SetStateAction<UserProfile>>;
-  categories: Category[]
+  categories: Category[],
+  loginUser: (userCredientials: LoginData) => Promise<void>,
+  userLogout: () => Promise<void>
 }
 
 export interface UserProfile {
@@ -45,6 +47,8 @@ export interface Product {
   name: string;
   price: number;
   owner: UserInfo;
+  description: string;
+  subCategoryId: number;
 }
 
 export interface ProductInfo {

@@ -7,7 +7,7 @@ import Home from "./components/home/Home";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import HomeBody from "./components/home/HomeBody";
-import DashBoard from "./components/DashBoard/DashBoard";
+import DashBoardLayout from "./components/DashBoard/DashBoardLayout";
 import SellAnItem from "./components/Listing.tsx/SellAnItem";
 import Cart from "./components/Cart/Cart";
 import Category from "./components/Category/Category";
@@ -24,7 +24,7 @@ const App: React.FC = () => {
       <Route path="/" element={<Intro />} />
       <Route path="home" element={<Home />}>
         <Route index element={<HomeBody />} />
-        <Route path="dashboard" element={<DashBoard />} />
+        <Route path="dashboard" element={<DashBoardLayout />} />
         <Route path="listing" element={<SellAnItem />} />
         <Route path="cart" element={<Cart />} />
         <Route path="category" element={<Category />} />

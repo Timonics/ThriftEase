@@ -121,6 +121,14 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
         algorithm: "HS256",
         expiresIn: "1h",
       });
+
+      res.cookie("authToken", token, {
+        httpOnly: true,
+        //secure: true,
+        maxAge: 1 * 24 * 60 * 60 * 1000,
+        sameSite: true,
+      });
+
       res.status(200).json({
         success: true,
         user: {
@@ -140,4 +148,21 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { getAllUsers, createNewUser, getAUser, deleteUser, updateUser, login };
+const logout = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    res.clearCookie("authToken", {
+      httpOnly: true, // Secure the cookie
+      // secure: process.env.NODE_ENV === "production", // Enable secure in production
+      sameSite: "strict",
+      path: "/", // Ensure this matches the path where the cookie was set
+    });
+    res.status(200).send({ message: "Logged out successfully" });
+  } catch (err) {
+    console.error("Failed to clear token", err);
+    res.status(500).send({ message: "Logout failed" });
+  }
+};
+
+
+
+export { getAllUsers, createNewUser, getAUser, deleteUser, updateUser, login, logout };

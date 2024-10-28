@@ -3,6 +3,7 @@ import { Product } from "../db/models/product";
 import { Category } from "../db/models/category";
 import { User } from "../db/models/user";
 import { SubCategory } from "../db/models/subcategory";
+import { Condition, Status } from "../interfaces/thriftease-interface";
 
 const getAllProducts = async (req: Request, res: Response) => {
   try {
@@ -99,7 +100,20 @@ const getAProduct = async (req: Request, res: Response) => {
 
 const createNewProduct = async (req: Request, res: Response) => {
   try {
-    const { id, name, categoryId, subCategoryId, ownerId, price } = req.body;
+    const {
+      id,
+      name,
+      categoryId,
+      subCategoryId,
+      ownerId,
+      price,
+      description,
+      negotiable,
+      condition,
+      location,
+      status,
+      deliveryOptions,
+    } = req.body;
 
     const category = await Category.findByPk(categoryId);
     if (!category) {
@@ -118,6 +132,17 @@ const createNewProduct = async (req: Request, res: Response) => {
       res.status(404).json({ message: "User not found" });
       return;
     }
+
+    if (!Object.values(Condition).includes(condition)) {
+      res.status(400).json({ message: "Invalid product condition." });
+      return;
+    }
+
+    if (!Object.values(Status).includes(status)) {
+      res.status(400).json({ message: "Invalid product status." });
+      return;
+    }
+
     const newProduct = await Product.create({
       id,
       name,
@@ -125,6 +150,12 @@ const createNewProduct = async (req: Request, res: Response) => {
       subCategoryId,
       ownerId,
       price,
+      description,
+      negotiable,
+      condition,
+      location,
+      status,
+      deliveryOptions,
     });
 
     if (!newProduct) {
@@ -190,7 +221,7 @@ const deleteProduct = async (req: Request, res: Response) => {
       res.status(404).json({ message: "Product Not Deleted" });
       return;
     }
-    res.status(200).send("Product Deleted");
+    res.status(200).json({ message: "Product Deleted" });
   } catch (err) {
     console.error("Error: ", err);
   }

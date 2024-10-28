@@ -14,7 +14,7 @@ export interface CategoryAttribute {
 export interface SubCategoryAttribute {
   id: number;
   name: string;
-  categoryId: number
+  categoryId: number;
 }
 
 export interface ProductAttribute {
@@ -24,26 +24,29 @@ export interface ProductAttribute {
   subCategoryId: number;
   ownerId: number;
   price: number;
-  category?: CategoryAttribute;
-
-  //description: string;
-  //negotiable: boolean;
-  //condition: 'New' | 'Like New' | 'Good' | 'Fair' | 'Poor';
-  //location: string;
-  //rating: number;
-  //discount: string;
+  description: string;
+  negotiable: boolean;
+  condition: Condition;
+  location: string;
+  status: Status;
+  deliveryOptions: string[];
   //imageUrls: string[];
-  //status: "Available" | "Sold" | "Reserved";
   //views: number;
+  //rating: number;
   //tags: string[];
-  //deliveryOptions: string[];
-  //favoriteCount: number;
   //reviews: Reviews[];
 }
 
-export interface Reviews {
-  userId: string;
-  comment: string;
-  rating: number;
-  date: Date;
+export enum Condition {
+  New = "New",
+  LikeNew = "Like New",
+  Good = "Good",
+  Fair = "Fair",
+  Poor = "Poor",
+}
+
+export enum Status {
+  Available = "Available",
+  Sold = "Sold",
+  Reserved = "Reserved",
 }

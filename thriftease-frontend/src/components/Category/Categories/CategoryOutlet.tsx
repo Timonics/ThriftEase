@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { act, useEffect, useState } from "react";
 import { useMyContext } from "../../../context/MyAppDataProvider";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 import { config } from "../../../config";
+import { Product } from "../../../interfaces/thriftease-interface";
+import SoldOut from "../../Badge/SoldOut";
 
 const CategoryOutlet: React.FC = () => {
   type SubCategories = {
     id: number;
     name: string;
   };
-
   const { dbURL } = config;
+  const location = useLocation();
+  const activeLink = new URLSearchParams(location.search).get("subcategory");
   const { categories } = useMyContext();
   const [subCategories, setSubCategories] = useState<SubCategories[]>([]);
+  const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
 
   const path = useLocation();
   const pathArr = path.pathname.split("/");
@@ -25,9 +29,6 @@ const CategoryOutlet: React.FC = () => {
   const filteredCategoryName = categories.filter(
     (category) => category.name.toLowerCase() === categoryName
   );
-
-  const location = useLocation();
-  const activeLink = new URLSearchParams(location.search).get("subcategory");
 
   const categoryElements = filteredCategoryName.map((filteredCategory) => {
     const categoryDescriptions = [
@@ -82,7 +83,6 @@ const CategoryOutlet: React.FC = () => {
         const response = await axios.get(
           `${dbURL}sub-categories/category/${filteredCategory.id}`
         );
-        console.log(filteredCategory.id);
         setSubCategories(response.data.subCategories);
       } catch (err: unknown) {
         if (err instanceof AxiosError) {
@@ -123,11 +123,73 @@ const CategoryOutlet: React.FC = () => {
       className={`p-2 relative text-xs ${
         activeLink === subCat.id.toString()
           ? "border-active font-bold text-appgreen"
-          : "border-inactive hover:bg-slate-300/15 text-appblue font-semibold font-light"
+          : "border-inactive hover:bg-slate-300/15 text-appblue"
       }`}
     >
       {subCat.name}
     </NavLink>
+  ));
+
+  const fetchCategoryProducts = async () => {
+    try {
+      const response = await axios.get(`${dbURL}products/category/${pathName}`);
+      setCategoryProducts(response.data.products);
+    } catch (err: unknown) {
+      setCategoryProducts([]);
+      console.error("Unexpected Error: ", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategoryProducts();
+  }, [pathName]);
+
+  const categoryProductsElements = categoryProducts.map((product) => (
+    <Link
+      key={product.id}
+      to={""}
+      className="relative shadow-slate-300/75 shadow-xl w-[220px]"
+    >
+      <SoldOut />
+      <img
+        src=""
+        alt=""
+        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent"
+      />
+      <div className="py-3 px-2 gap-2 flex flex-col product-background">
+        <h2 className="font-semibold text-xs">{"Name: " + product.name}</h2>
+        <p className="text-xs font-light">
+          {"Description: " + product.description}
+        </p>
+        <p className="text-sm font-extrabold">{"Price: ₦" + product.price}</p>
+      </div>
+    </Link>
+  ));
+
+  const subCategoryProducts = categoryProducts.filter(
+    (product) => product.subCategoryId === Number(activeLink)
+  );
+
+  const subCategoryProductsElements = subCategoryProducts.map((product) => (
+    <Link
+      key={product.id}
+      to={""}
+      className="relative shadow-slate-300/75 shadow-xl w-[220px]"
+    >
+      <SoldOut />
+      <img
+        src=""
+        alt=""
+        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent"
+      />
+      <div className="py-3 px-2 gap-2 flex flex-col product-background">
+        <h2 className="font-semibold text-xs">{"Name: " + product.name}</h2>
+        <p className="text-xs font-light">
+          {"Description: " + product.description}
+        </p>
+        <p className="text-sm font-extrabold">{"Price: ₦" + product.price}</p>
+      </div>
+    </Link>
   ));
 
   return (
@@ -135,6 +197,9 @@ const CategoryOutlet: React.FC = () => {
       {categoryElements}
       <div className="flex border bg-gray-950  gap-5 items-center justify-center">
         {subCategoriesElements}
+      </div>
+      <div className="flex gap-7">
+        {activeLink ? subCategoryProductsElements : categoryProductsElements}
       </div>
     </div>
   );

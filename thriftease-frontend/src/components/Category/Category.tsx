@@ -122,7 +122,7 @@ const Category: React.FC = (props: Props) => {
         </Link>
         <div className="flex gap-5">
           <Link
-            to="/categories/automobiles"
+            to="/categories/automobiles-and-accessories"
             className="category-background shadow-xl"
           >
             <img src="" alt="" className="w-full h-[100px] bg-appdarkblue" />
@@ -135,12 +135,12 @@ const Category: React.FC = (props: Props) => {
             </div>
           </Link>
           <Link
-            to="/categories/miscellaneous"
+            to="/categories/odds-and-ends"
             className="category-background shadow-xl"
           >
             <img src="" alt="" className="w-full h-[100px] bg-appdarkblue" />
             <div className="flex flex-col gap-1 p-4">
-              <h2 className="font-bold text-2xl">Miscellaneous</h2>
+              <h2 className="font-bold text-2xl">Odds & Ends</h2>
               <p className="text-[11px] font-light">
                 Not sure where to look? This category features a variety of
                 unique items that don't quite fit into the usual boxes.
