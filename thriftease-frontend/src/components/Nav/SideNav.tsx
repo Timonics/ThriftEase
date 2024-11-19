@@ -15,6 +15,7 @@ import Initials from "../Badge/Initials";
 
 const SideNav: React.FC = () => {
   const { userProfile } = useMyContext();
+
   return (
     <div className="flex flex-col h-full w-full gap-1.5 text-appdarkblue">
       <NavLink
@@ -84,26 +85,28 @@ const SideNav: React.FC = () => {
         <TbCategory size={17} />
         Category
       </NavLink>
-      <div className="mt-auto flex-col flex gap-1.5">
+      <div className="mt-auto flex-col flex gap-1.5 mb-4">
+        {userProfile.id !== 0 && (
+          <NavLink
+            to={"../account"}
+            className={({ isActive }) =>
+              `flex gap-1 text-xs font-semibold p-2 ${
+                userProfile.name ? "pl-3" : "pl-4"
+              } ${isActive ? "sidenav-background" : ""}`
+            }
+          >
+            <div className="flex gap-1 items-center">
+              {userProfile.name ? (
+                <Initials />
+              ) : (
+                <MdOutlineAccountCircle size={17} />
+              )}
+              Account
+            </div>
+          </NavLink>
+        )}
         <NavLink
-          to={"aa"}
-          className={({ isActive }) =>
-            `flex gap-1 text-xs font-semibold p-2 ${
-              userProfile.name ? "pl-3" : "pl-4"
-            } ${isActive ? "sidenav-background" : ""}`
-          }
-        >
-          <div className="flex gap-1 items-center">
-            {userProfile.name ? (
-              <Initials />
-            ) : (
-              <MdOutlineAccountCircle size={17} />
-            )}
-            Account
-          </div>
-        </NavLink>
-        <NavLink
-          to={""}
+          to={"../help-and-support"}
           className="p-2 flex gap-1 items-center font-semibold pl-4 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         >
           <TbHelp size={17} />

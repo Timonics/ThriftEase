@@ -19,6 +19,8 @@ export interface MyAppContext {
   categories: Category[],
   loginUser: (userCredientials: LoginData) => Promise<void>,
   userLogout: () => Promise<void>
+  cartProducts: Product[]
+  setCartProducts: React.Dispatch<React.SetStateAction<Product[]>>
 }
 
 export interface UserProfile {

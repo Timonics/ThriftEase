@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
+import EmptyCart from "./EmptyCart";
+import FilledCart from "./FilledCart";
+import { useMyContext } from "../../context/MyAppDataProvider";
 
-type Props = {}
+const CartList: React.FC = () => {
+  const { cartProducts } = useMyContext();
+  return <>{cartProducts.length ? <FilledCart /> : <EmptyCart />}</>;
+};
 
-const CartList = (props: Props) => {
-  return (
-    <div>CartList</div>
-  )
-}
-
-export default CartList
+export default CartList;

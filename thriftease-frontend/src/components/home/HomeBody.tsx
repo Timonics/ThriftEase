@@ -8,7 +8,7 @@ const HomeBody: React.FC = () => {
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-3">
         <h1 className="font-extrabold text-[40px] leading-[48px] mt-4 text-appdarkblue">
-          Buy, Sell, and Negotiate for Second-Hand Treasures!
+          Buy, Sell, and Negotiate for Thrifted Treasures!
         </h1>
         <p className="text-sm w-[90%] font-light text-appdarkblue/75 leading-6">
           At <span className="font-bold text-appgreen">ThriftEase.</span>, we

@@ -5,6 +5,7 @@ import {
   UserProfile,
   Category,
   LoginData,
+  Product,
 } from "../interfaces/thriftease-interface";
 import { config } from "../config";
 import axios, { AxiosError } from "axios";
@@ -18,6 +19,7 @@ const MyAppDataProvider: React.FC<MyAppProviderProps> = ({ children }) => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSignUpFormOpen, setIsSignUpFormOpen] = useState(false);
+  const [cartProducts, setCartProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([
     {
       id: 0,
@@ -77,7 +79,7 @@ const MyAppDataProvider: React.FC<MyAppProviderProps> = ({ children }) => {
     if (profile) {
       const loggedUserProfile = JSON.parse(profile);
       setUserProfile(loggedUserProfile);
-      setIsAuthenticated(true)
+      setIsAuthenticated(true);
     }
   }, []);
 
@@ -110,6 +112,8 @@ const MyAppDataProvider: React.FC<MyAppProviderProps> = ({ children }) => {
     categories,
     loginUser,
     userLogout,
+    cartProducts,
+    setCartProducts
   };
 
   return (

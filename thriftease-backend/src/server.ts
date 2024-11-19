@@ -4,11 +4,14 @@ const app = express();
 import * as dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
+import authJwt from "./authorization/jwt";
 
 dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+//app.use(authJwt())
+
 
 const PORT: string | number = process.env.PORT || 4000;
 const api = process.env.API_BASE_URL;

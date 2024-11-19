@@ -15,6 +15,8 @@ import Search from "./components/Search/Search";
 import Categories from "./components/Category/Categories/container/Categories";
 import CategoryOutlet from "./components/Category/Categories/CategoryOutlet";
 import { useMyContext } from "./context/MyAppDataProvider";
+import Account from "./components/Account/Account";
+import Help from "./components/Support/Help";
 
 const App: React.FC = () => {
   const { categories } = useMyContext();
@@ -46,6 +48,8 @@ const App: React.FC = () => {
           );
         })}
       </Route>
+      <Route path="account" element={<Account />}/>
+      <Route path="help-and-support" element={<Help />}/>
     </Routes>
   );
 };

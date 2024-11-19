@@ -14,7 +14,7 @@ const CategoryOutlet: React.FC = () => {
   const { dbURL } = config;
   const location = useLocation();
   const activeLink = new URLSearchParams(location.search).get("subcategory");
-  const { categories } = useMyContext();
+  const { categories, cartProducts, setCartProducts } = useMyContext();
   const [subCategories, setSubCategories] = useState<SubCategories[]>([]);
   const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
 
@@ -130,6 +130,16 @@ const CategoryOutlet: React.FC = () => {
     </NavLink>
   ));
 
+  const handleAddToCart = (product: Product) => {
+    setCartProducts((prevState) => {
+      const existingProduct = prevState.some(
+        (products) => products.id === product.id
+      );
+      if (!existingProduct) return [...prevState, product];
+      else return prevState;
+    });
+  };
+
   const fetchCategoryProducts = async () => {
     try {
       const response = await axios.get(`${dbURL}products/category/${pathName}`);
@@ -148,20 +158,31 @@ const CategoryOutlet: React.FC = () => {
     <Link
       key={product.id}
       to={""}
-      className="relative shadow-slate-300/75 shadow-xl w-[220px]"
+      className="relative shadow-slate-300/75 shadow-xl w-[220px] rounded-xl"
     >
       <SoldOut />
       <img
         src=""
         alt=""
-        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent"
+        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent rounded-t-xl"
       />
-      <div className="py-3 px-2 gap-2 flex flex-col product-background">
+      <div className="py-3 px-2 gap-2 flex flex-col product-background rounded-b-xl">
         <h2 className="font-semibold text-xs">{"Name: " + product.name}</h2>
         <p className="text-xs font-light">
           {"Description: " + product.description}
         </p>
         <p className="text-sm font-extrabold">{"Price: ₦" + product.price}</p>
+        <div className="flex justify-around">
+          <div className="text-[10px] py-2 px-4 rounded-lg bg-appdarkblue text-appgreen font-bold shadow-xl">
+            Negotiate
+          </div>
+          <div
+            className="text-[10px] py-2 px-4 rounded-lg bg-appdarkblue text-appgreen font-bold shadow-xl"
+            onClick={() => handleAddToCart(product)}
+          >
+            Add to Cart
+          </div>
+        </div>
       </div>
     </Link>
   ));
@@ -174,20 +195,31 @@ const CategoryOutlet: React.FC = () => {
     <Link
       key={product.id}
       to={""}
-      className="relative shadow-slate-300/75 shadow-xl w-[220px]"
+      className="relative shadow-slate-300/75 shadow-xl w-[220px] rounded-xl"
     >
       <SoldOut />
       <img
         src=""
         alt=""
-        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent"
+        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent rounded-t-xl"
       />
-      <div className="py-3 px-2 gap-2 flex flex-col product-background">
+      <div className="py-3 px-2 gap-2 flex flex-col product-background rounded-b-xl">
         <h2 className="font-semibold text-xs">{"Name: " + product.name}</h2>
         <p className="text-xs font-light">
           {"Description: " + product.description}
         </p>
         <p className="text-sm font-extrabold">{"Price: ₦" + product.price}</p>
+        <div className="flex justify-around">
+          <div className="text-[10px] py-2 px-4 rounded-lg bg-appdarkblue text-appgreen font-bold shadow-xl">
+            Negotiate
+          </div>
+          <div
+            className="text-[10px] py-2 px-4 rounded-lg bg-appdarkblue text-appgreen font-bold shadow-xl"
+            onClick={() => handleAddToCart(product)}
+          >
+            Add to Cart
+          </div>
+        </div>
       </div>
     </Link>
   ));

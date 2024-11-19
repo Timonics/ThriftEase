@@ -107,7 +107,7 @@ const updateUser = async (req: Request, res: Response, next: NextFunction) => {
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const secret: string = process.env.JWT_SECRET_KEY || "";
+    const secret: string = process.env.JWT_SECRET_KEY || "GoOdOnEmIcK";
     const { email, password } = req.body;
     const userExists = await User.findOne({ where: { email } });
     if (!userExists) {

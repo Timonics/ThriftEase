@@ -33,7 +33,7 @@ const Intro: React.FC = () => {
 `            <div className="absolute h-full w-full inset-0 bg-black/75 " />
 `          </div>
           <div className="p-4 shadow-slate-400 h-screen shadow-xl">
-            <Nav />
+            <p className="p-2 font-black text-appgreen">ThriftEase.</p>
             <div className="flex flex-col justify-center items-center h-[420px] gap-5">
               <h1 className="text-7xl font-bold text-white/75">
                 Welcome to{" "}

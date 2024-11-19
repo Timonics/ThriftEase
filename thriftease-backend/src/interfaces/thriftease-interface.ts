@@ -50,3 +50,9 @@ export enum Status {
   Sold = "Sold",
   Reserved = "Reserved",
 }
+
+export interface OrderItem {
+  id: number,
+  productId: number,
+  orderId: number,
+}

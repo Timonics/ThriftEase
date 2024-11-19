@@ -3,9 +3,7 @@ import { useMyContext } from "../../context/MyAppDataProvider";
 import CartList from "./CartList";
 import CartAuthMsg from "./CartAuthMsg";
 
-type Props = {};
-
-const Cart: React.FC = (props: Props) => {
+const Cart: React.FC = () => {
   const { isAuthenticated } = useMyContext();
   return (
     <div className="h-full p-1">
