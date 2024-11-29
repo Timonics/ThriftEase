@@ -17,6 +17,7 @@ import CategoryOutlet from "./components/Category/Categories/CategoryOutlet";
 import { useMyContext } from "./context/MyAppDataProvider";
 import Account from "./components/Account/Account";
 import Help from "./components/Support/Help";
+import Settings from "./components/Settings/Settings";
 
 const App: React.FC = () => {
   const { categories } = useMyContext();
@@ -48,8 +49,9 @@ const App: React.FC = () => {
           );
         })}
       </Route>
-      <Route path="account" element={<Account />}/>
-      <Route path="help-and-support" element={<Help />}/>
+      <Route path="account" element={<Account />} />
+      <Route path="help-and-support" element={<Help />} />
+      <Route path="settings" element={<Settings />} />
     </Routes>
   );
 };

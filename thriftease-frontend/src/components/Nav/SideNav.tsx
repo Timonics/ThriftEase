@@ -113,7 +113,7 @@ const SideNav: React.FC = () => {
           Help & Support
         </NavLink>
         <NavLink
-          to={""}
+          to={"../settings"}
           className="p-2 flex gap-1 items-center font-semibold pl-4 text-xs transition duration-300 ease-out hover:bg-slate-100/75"
         >
           <TbSettings size={17} />
