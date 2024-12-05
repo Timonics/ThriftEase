@@ -11,15 +11,15 @@ const Products: React.FC = (props: Props) => {
     <Link
       key={index}
       to={""}
-      className="relative shadow-slate-500 shadow-2xl rounded-xl"
+      className="relative shadow-slate-500 shadow-2xl"
     >
       <SoldOut />
       <img
         src=""
         alt=""
-        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent rounded-t-xl"
+        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent"
       />
-      <div className="py-3 px-2 gap-2 flex flex-col product-background rounded-b-xl">
+      <div className="py-3 px-2 gap-2 flex flex-col product-background">
         <h2 className="font-semibold ">{"Name: " + element}</h2>
         <p className="text-xs font-light">{"Description: " + element}</p>
         <p className="text-sm font-extrabold">{"Price: $" + element}</p>

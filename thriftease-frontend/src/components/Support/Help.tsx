@@ -2,7 +2,7 @@ import React from "react";
 
 const Help: React.FC = () => {
   return (
-    <div className="home-background h-screen flex items-center justify-center">
+    <div className="product-background h-screen flex items-center justify-center">
       <div className="w-full h-2/3 bg-appgreen p-4 flex flex-col gap-3 justify-center">
         <h1 className="text-4xl font-bold"><span className="text-appdarkblue text-5xl">ThriftEase.</span> Help and Support</h1>
         <p>

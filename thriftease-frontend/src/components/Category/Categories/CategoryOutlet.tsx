@@ -158,26 +158,26 @@ const CategoryOutlet: React.FC = () => {
     <Link
       key={product.id}
       to={""}
-      className="relative shadow-slate-300/75 shadow-xl w-[220px] rounded-xl"
+      className="relative shadow-slate-300/75 shadow-xl w-[220px] h-[280px]"
     >
       <SoldOut />
       <img
         src=""
         alt=""
-        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent rounded-t-xl"
+        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent"
       />
-      <div className="py-3 px-2 gap-2 flex flex-col product-background rounded-b-xl">
-        <h2 className="font-semibold text-xs">{"Name: " + product.name}</h2>
-        <p className="text-xs font-light">
-          {"Description: " + product.description}
+      <div className="py-3 px-2 gap-1.5 flex flex-col product-background h-[150px]">
+        <h2 className="font-bold">{product.name}</h2>
+        <p className="text-[10px] font-light">
+          {product.description}
         </p>
-        <p className="text-sm font-extrabold">{"Price: ₦" + product.price}</p>
-        <div className="flex justify-around">
-          <div className="text-[10px] py-2 px-4 rounded-lg bg-appdarkblue text-appgreen font-bold shadow-xl">
+        <p className="text-xs font-semibold">{"₦" + product.price}</p>
+        <div className="flex justify-around mt-auto">
+          <div className="text-[10px] py-2 px-4 bg-gray-950 text-appgreen font-bold shadow-xl">
             Negotiate
           </div>
           <div
-            className="text-[10px] py-2 px-4 rounded-lg bg-appdarkblue text-appgreen font-bold shadow-xl"
+            className="text-[10px] py-2 px-4 bg-gray-950 text-appgreen font-bold shadow-xl"
             onClick={() => handleAddToCart(product)}
           >
             Add to Cart
@@ -195,26 +195,26 @@ const CategoryOutlet: React.FC = () => {
     <Link
       key={product.id}
       to={""}
-      className="relative shadow-slate-300/75 shadow-xl w-[220px] rounded-xl"
+      className="relative shadow-slate-300/75 shadow-xl w-[220px] h-[280px]"
     >
       <SoldOut />
       <img
         src=""
         alt=""
-        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent rounded-t-xl"
+        className="w-full h-[130px] bg-slate-800 outline-transparent focus:outline-transparent border-transparent"
       />
-      <div className="py-3 px-2 gap-2 flex flex-col product-background rounded-b-xl">
-        <h2 className="font-semibold text-xs">{"Name: " + product.name}</h2>
-        <p className="text-xs font-light">
-          {"Description: " + product.description}
+      <div className="py-3 px-2 gap-1.5 flex flex-col product-background h-[150px]">
+        <h2 className="font-bold text-sm">{product.name}</h2>
+        <p className="text-[10px] font-light">
+          {product.description}
         </p>
-        <p className="text-sm font-extrabold">{"Price: ₦" + product.price}</p>
-        <div className="flex justify-around">
-          <div className="text-[10px] py-2 px-4 rounded-lg bg-appdarkblue text-appgreen font-bold shadow-xl">
+        <p className="text-xs font-semibold">{"₦" + product.price}</p>
+        <div className="flex justify-around mt-auto">
+          <div className="text-[10px] py-2 px-4 bg-gray-950 text-appgreen font-bold shadow-xl">
             Negotiate
           </div>
           <div
-            className="text-[10px] py-2 px-4 rounded-lg bg-appdarkblue text-appgreen font-bold shadow-xl"
+            className="text-[10px] py-2 px-4 bg-gray-950 text-appgreen font-bold shadow-xl"
             onClick={() => handleAddToCart(product)}
           >
             Add to Cart
