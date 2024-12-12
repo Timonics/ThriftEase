@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -16,8 +16,8 @@ if (rootElement) {
       <Router>
         <MyAppDataProvider>
           <App />
-          <SpeedInsights />
         </MyAppDataProvider>
+        <SpeedInsights />
       </Router>
     </StrictMode>
   );
