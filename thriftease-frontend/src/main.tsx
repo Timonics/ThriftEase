@@ -17,7 +17,6 @@ if (rootElement) {
         <MyAppDataProvider>
           <App />
         </MyAppDataProvider>
-        <SpeedInsights />
       </Router>
     </StrictMode>
   );
