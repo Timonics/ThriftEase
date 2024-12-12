@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import introBackground from "../../assets/introBackground.jpg"
+import introBackground from "../../assets/introBackground.jpg";
 
 import Nav from "../Nav/Nav";
 import WhatToExpect from "../Features/WhatToExpect";
@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 import FirstPage from "./FirstPage";
 
 const Intro: React.FC = () => {
-  const loaded: boolean = true
+  const loaded: boolean = true;
   const [isFirstPage, setIsFirstPage] = useState(true);
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const Intro: React.FC = () => {
               alt=""
               className="object-cover h-full w-full"
             />
-`            <div className="absolute h-full w-full inset-0 bg-black/75 " />
-`          </div>
+            ` <div className="absolute h-full w-full inset-0 bg-black/75 " />`{" "}
+          </div>
           <div className="p-4 shadow-slate-400 h-screen shadow-xl">
             <p className="p-2 font-black text-appgreen">ThriftEase.</p>
             <div className="flex flex-col justify-center items-center h-[420px] gap-5">
